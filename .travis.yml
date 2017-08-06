@@ -11,6 +11,9 @@ env:
   global:
     - COMMIT=${TRAVIS_COMMIT::8}
 
+script:
+  - echo "Empty for now"
+
 after_success:
   - sudo docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   - export RESOURCES=alta0815/resources
