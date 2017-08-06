@@ -1,0 +1,16 @@
+sudo: required
+
+services:
+  - docker
+
+env:
+  global:
+    - COMMIT=${TRAVIS_COMMIT::8}
+
+after_success:
+  - sudo docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - export RESOURCES=alta0815/resources
+  - export TAG=latest
+  - sudo docker build -t $RESOURCES:$COMMIT ./resources
+  - sudo docker tag $RESOURCES:$COMMIT $RESOURCES:$TAG
+  - sudo docker push $RESOURCES
