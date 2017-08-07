@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "pm2-docker ./src/app.js",
-    "start:dev": "nodemon ./src/app"
+    "start:dev": "nodemon ./src/app.js"
   },
   "keywords": [],
   "author": "",
