@@ -1,0 +1,18 @@
+version: '3'
+services: 
+  api:
+    container_name: api
+    build: ./api
+    environment:
+      - NODE_ENV=dev
+      - NODE_PATH=./src
+    command: ["npm", "run", "start:dev"]
+    volumes:
+      - ./api/src:/usr/app/src
+  # resources:
+  #   container_name: resources
+  #   build: ./resources
+  #   restart: always
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"

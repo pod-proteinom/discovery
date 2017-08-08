@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "pm2-docker ./src/app.js",
-    "start:dev": "nodemon ./src/app.js"
+    "start:dev": "nodemon -L ./src/app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "conf": "^1.1.2",
+    "config": "^1.26.1",
     "koa": "^2.3.0",
     "koa-better-router": "^2.1.1",
     "pm2": "^2.6.1",
