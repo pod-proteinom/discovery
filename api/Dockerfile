@@ -6,6 +6,7 @@ WORKDIR /usr/app
 COPY package.json .
 RUN npm install
 
+COPY ./config ./config
 COPY ./src ./src
 
 EXPOSE 8080
