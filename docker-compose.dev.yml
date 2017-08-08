@@ -9,10 +9,10 @@ services:
     command: ["npm", "run", "start:dev"]
     volumes:
       - ./api/src:/usr/app/src
-  # resources:
-  #   container_name: resources
-  #   build: ./resources
-  #   restart: always
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
+  resources:
+    container_name: resources
+    build: ./resources
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
