@@ -17,7 +17,11 @@ script:
 after_success:
   - sudo docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   - export RESOURCES=sanedev/resources
+  - export API=sanedev/api
   - export TAG=latest
   - sudo docker build -t $RESOURCES:$COMMIT ./resources
   - sudo docker tag $RESOURCES:$COMMIT $RESOURCES:$TAG
   - sudo docker push $RESOURCES
+  - sudo docker build -t $API:$COMMIT ./api
+  - sudo docker tag $API:$COMMIT $API:$TAG
+  - sudo docker push $API
