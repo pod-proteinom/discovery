@@ -9,6 +9,10 @@ services:
     command: ["npm", "run", "start:dev"]
     volumes:
       - ./api/src:/usr/app/src
+    env_file:
+      - .env
+    depends_on:
+      - database
   resources:
     container_name: resources
     build: ./resources
@@ -16,3 +20,17 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    env_file:
+      - .env
+    depends_on:
+      - api
+  database:
+    container_name: database
+    build: ./database
+    volumes:
+      - data:/var/lib/postgresql/data/pgdata
+    env_file:
+      - .env
+volumes:
+  data:
+    external: true

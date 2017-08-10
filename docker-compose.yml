@@ -6,6 +6,10 @@ services:
     environment:
       - NODE_ENV=prod
       - NODE_PATH=./src
+    env_file:
+      - .env
+    depends_on:
+      - database
   resources:
     container_name: resources
     image: sanedev/resources
@@ -13,3 +17,17 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    env_file:
+      - .env
+    depends_on:
+      - api
+  database:
+    container_name: database
+    build: sanedev/database
+    volumes:
+      - data:/var/lib/postgresql/data/pgdata
+    env_file:
+      - .env
+volumes:
+  data:
+    external: true
