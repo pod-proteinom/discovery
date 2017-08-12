@@ -4,7 +4,6 @@ services:
     container_name: api
     build: ./api
     environment:
-      - NODE_ENV=dev
       - NODE_PATH=./src
     command: ["npm", "run", "start:dev"]
     volumes:

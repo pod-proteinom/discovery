@@ -4,7 +4,6 @@ services:
     container_name: api
     image: sanedev/api
     environment:
-      - NODE_ENV=prod
       - NODE_PATH=./src
     env_file:
       - .env
