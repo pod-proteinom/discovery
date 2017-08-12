@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const defaultConfig = require('./default');
 
-module.exports = Object.assign({}, defaultConfig);
+module.exports = _.merge({}, defaultConfig);
