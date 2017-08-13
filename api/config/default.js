@@ -17,6 +17,12 @@ module.exports = {
       }
     }
   },
+  router: {
+    prefix: '/api'
+  },
+  app: {
+    slugify: {lower: true}
+  },
   dirs : {
     src: srcDir,
     modules: modulesDir

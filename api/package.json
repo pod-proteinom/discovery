@@ -13,12 +13,14 @@
   "dependencies": {
     "config": "^1.26.1",
     "koa": "^2.3.0",
+    "koa-better-body": "^3.0.4",
     "koa-better-router": "^2.1.1",
     "lodash": "^4.17.4",
     "pg": "^7.1.0",
     "pg-hstore": "^2.3.2",
     "pm2": "^2.6.1",
     "sequelize": "^4.4.2",
+    "slug": "^0.9.1",
     "winston": "^2.3.1"
   },
   "devDependencies": {

@@ -1,3 +1,6 @@
+const config = require('config');
+const slugify = require('slug');
+
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define("Category", {
     id: {
@@ -6,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4,
       allowNull: false
     },
-    title: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -31,6 +34,11 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: models => {
         models.Category.hasMany(models.Post, {foreignKey: 'category_id'});
+      }
+    },
+    hooks: {
+      beforeValidate: (category, options) => {
+        category.slug = slugify(category.name, config.app.slugify);
       }
     }
   });
