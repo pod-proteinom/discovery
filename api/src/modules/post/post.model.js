@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define("Post", {
+  const Post = sequelize.define("Post", {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
@@ -33,12 +33,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     }
   }, {
-    tableName: 'posts',
-    classMethods: {
-      associate: models => {
-        models.Post.belongsTo(models.User, {foreignKey: 'author_id'});
-        models.Post.belongsTo(models.Category, {foreignKey: 'category'});
-      }
-    }
+    tableName: 'posts'
   });
+
+  Post.associate = function(models) {
+    models.Post.belongsTo(models.User, {foreignKey: 'author'});
+    models.Post.belongsTo(models.Category, {foreignKey: 'category'});
+  }
+
+  return Post;
 };

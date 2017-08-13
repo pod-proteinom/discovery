@@ -1,22 +1,17 @@
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define("User", {
-    id: {
-      type: DataTypes.UUID,
-      primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
-      allowNull: false
-    },
+  const User = sequelize.define("User", {
     username: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    }
+      primaryKey: true,
+      allowNull: false 
+      }   
   }, {
-    tableName: 'users',
-    classMethods: {
-      associate: models => {
-        models.User.hasMany(models.Post, {foreignKey: 'author_id'})
-      }
-    }
+    tableName: 'users'
   });
+
+  User.associate = function(models) {
+    models.User.hasMany(models.Post, {foreignKey: 'author'})
+  }
+
+  return User;
 };

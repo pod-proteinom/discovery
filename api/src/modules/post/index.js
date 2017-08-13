@@ -1,8 +1,8 @@
-const {User} = require('core/database');
+const {Post} = require('core/database');
 
 const create = async (ctx, next) => {
   try {
-    ctx.body = await User.create(ctx.request.fields);
+    ctx.body = await Post.create(ctx.request.fields);
   } catch(e) {
     ctx.throw(e.status || 500, e.message);
   }
@@ -10,7 +10,7 @@ const create = async (ctx, next) => {
 
 const readById = async (ctx, next) => {
   try {
-    ctx.body = await User.findById(ctx.params.id);
+    ctx.body = await Post.findById(ctx.params.id);
   } catch(e) {
     ctx.throw(e.status || 500, e.message);
   }
@@ -18,7 +18,7 @@ const readById = async (ctx, next) => {
 
 const del = async (ctx, next) => {
   try {
-    ctx.body = await User.destroy({where: {id: ctx.params.id}});
+    ctx.body = await Post.destroy({where: {id: ctx.params.id}});
   } catch(e) {
     ctx.throw(e.status || 500, e.message);
   }

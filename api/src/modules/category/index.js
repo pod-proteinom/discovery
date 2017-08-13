@@ -1,4 +1,4 @@
-const {Category} = require('core/database');
+const {Category, Post} = require('core/database');
 
 const create = async (ctx, next) => {
   try {
@@ -8,7 +8,7 @@ const create = async (ctx, next) => {
   }
 }
 
-const read = async (ctx, next) => {
+const readById = async (ctx, next) => {
   try {
     ctx.body = await Category.findById(ctx.params.id);
   } catch(e) {
@@ -17,8 +17,15 @@ const read = async (ctx, next) => {
 }
 
 const readIncludingPosts = async (ctx, next) => {
-  //TODO
-  ctx.body = ctx.query;
+  try {
+    ctx.body = await Category.findAll({
+      include: [
+        {model: Post, as: 'posts'}
+      ]
+    });
+  } catch(e) {
+    ctx.throw(e.status || 500, e.message);
+  }
 }
 
 const del = async (ctx, next) => {
@@ -29,4 +36,4 @@ const del = async (ctx, next) => {
   }
 }
 
-module.exports = {create, read, readIncludingPosts, del};
+module.exports = {create, readById, readIncludingPosts, del};
