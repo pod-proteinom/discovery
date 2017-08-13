@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: models => {
         models.Post.belongsTo(models.User, {foreignKey: 'author_id'});
-        models.Post.belongsTo(models.Category, {foreignKey: 'category_id'});
+        models.Post.belongsTo(models.Category, {foreignKey: 'category'});
       }
     }
   });
