@@ -21,7 +21,12 @@ module.exports = {
     prefix: '/api'
   },
   app: {
-    slugify: {lower: true}
+    slugify: {lower: true},
+    logger: {
+      level: 'debug',
+      colorize: true,
+      timestamp: true
+    }
   },
   dirs : {
     src: srcDir,

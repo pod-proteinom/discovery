@@ -1,4 +1,5 @@
-const conf = require('config');
+const config = require('config');
+const log = require('core/logger');
 const Koa = require('koa');
 const bodyParser = require('koa-better-body');
 
@@ -10,7 +11,7 @@ app.use(bodyParser());
 app.use(router.middleware());
 
 database.sequelize.sync().then(() => {
-  app.listen(conf.server.port, () => {
-    // log.info(`Server listening on ${conf.server.port}`);
+  app.listen(config.server.port, () => {
+    log.info(`Server listening on ${config.server.port}`);
   });
 })
