@@ -18,6 +18,7 @@ after_success:
   - sudo docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   - export RESOURCES=sanedev/resources
   - export API=sanedev/api
+  - export DATABASE=sanedev/database
   - export TAG=latest
   - sudo docker build -t $RESOURCES:$COMMIT ./resources
   - sudo docker tag $RESOURCES:$COMMIT $RESOURCES:$TAG
@@ -25,3 +26,6 @@ after_success:
   - sudo docker build -t $API:$COMMIT ./api
   - sudo docker tag $API:$COMMIT $API:$TAG
   - sudo docker push $API
+  - sudo docker build -t $DATABASE:$COMMIT ./database
+  - sudo docker tag $DATABASE:$COMMIT $DATABASE:$TAG
+  - sudo docker push $DATABASE
