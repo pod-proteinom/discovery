@@ -1,5 +1,30 @@
 version: '3'
 services: 
+  resources:
+    container_name: resources
+    build: ./resources
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+      - .env
+    depends_on:
+      - web
+  web:
+    container_name: web
+    build: ./web
+    environment:
+      - NODE_PATH=./src
+    command: ["npm", "run", "start:dev"]
+    volumes:
+      - ./web/src:/usr/app/src
+    ports:
+      - "4040:4040"
+    env_file:
+      - .env
+    depends_on:
+      - api
   api:
     container_name: api
     build: ./api
@@ -14,17 +39,6 @@ services:
       - .env
     depends_on:
       - database
-  resources:
-    container_name: resources
-    build: ./resources
-    restart: always
-    ports:
-      - "80:80"
-      - "443:443"
-    env_file:
-      - .env
-    depends_on:
-      - api
   database:
     container_name: database
     build: ./database
