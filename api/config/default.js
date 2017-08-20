@@ -29,6 +29,7 @@ module.exports = {
     }
   },
   dirs : {
+    root: rootDir,
     src: srcDir,
     modules: modulesDir
   }

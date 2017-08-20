@@ -24,6 +24,7 @@
     "winston": "^2.3.1"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "sequelize-fixtures": "^0.6.0"
   }
 }

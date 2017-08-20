@@ -7,11 +7,33 @@ const app = new Koa();
 const database = require('core/database');
 const router = require('./router');
 
+app.use(async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    log.error(err.message)
+    ctx.status = err.status || 500;
+    ctx.body = err.message;
+    ctx.app.emit('error', err, ctx);
+  }
+});
+
 app.use(bodyParser());
 app.use(router.middleware());
 
-database.sequelize.sync().then(() => {
+const startServer = () => {
   app.listen(config.server.port, () => {
     log.info(`Server listening on ${config.server.port}`);
   });
-})
+}
+
+const loadFixtures = () => {
+  const fixtures = config.dirs.fixtures;
+  if(fixtures) {
+    return require(fixtures)(database);
+  }
+};
+
+database.sequelize.sync()
+  .then(loadFixtures)
+  .then(startServer);

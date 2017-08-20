@@ -1,11 +1,7 @@
 const {Post} = require('core/database');
 
 const create = async (ctx, next) => {
-  try {
-    ctx.body = await Post.create(ctx.request.fields);
-  } catch(e) {
-    ctx.throw(e.status || 500, e.message);
-  }
+  ctx.body = await Post.create(ctx.request.fields);
 }
 
 const readById = async (ctx, next) => {

@@ -7,6 +7,7 @@ COPY package.json .
 RUN npm install
 
 COPY ./config ./config
+COPY ./fixtures ./fixtures
 COPY ./src ./src
 
 EXPOSE 8080
