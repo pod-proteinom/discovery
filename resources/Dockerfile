@@ -1,6 +1,4 @@
-FROM firesh/nginx-lua
-RUN mkdir -p /etc/nginx/logs
-COPY ./config/nginx/nginx.conf /etc/nginx
+FROM jwilder/nginx-proxy
+COPY ./config/nginx/ /etc/nginx/vhost.d/
 COPY ./public /var/www/public/assets
 EXPOSE 80 443
-CMD ["nginx", "-g", "daemon off;"]
