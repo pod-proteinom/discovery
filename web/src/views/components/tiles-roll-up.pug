@@ -1,0 +1,18 @@
+.tile.is-ancestor
+  .tile.is-4
+    .tile.is-parent.is-vertical
+      article.tile.is-child
+        include card
+      article.tile.is-child
+        include card
+  .tile.is-8.is-vertical
+    .tile
+      .tile.is-parent
+        article.tile.is-child
+          include post-card
+      .tile.is-parent
+        article.tile.is-child
+          include post-card
+    .tile.is-parent
+        article.tile.is-child
+          include category-card

@@ -1,1 +1,10 @@
-h1 hello
+extends layouts/base
+block header
+  include components/navbar
+block main
+  include components/hero
+  section.section
+    .container
+      include components/tiles
+block footer
+  include components/footer
