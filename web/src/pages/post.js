@@ -1,3 +1,3 @@
 module.exports = async (ctx, next) => {
-  ctx.body = 'Post page';
+  await ctx.render('post');
 }
