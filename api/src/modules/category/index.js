@@ -1,5 +1,6 @@
 const {Category, Post} = require('core/database');
 const logger = require('core/logger');
+const QueryBuilder = require('core/query');
 
 const create = async (ctx, next) => {
   try {
@@ -18,12 +19,12 @@ const readById = async (ctx, next) => {
 }
 
 const read = async (ctx, next) => {
+  const query = new QueryBuilder(ctx.query)
+    .whereIn('name')
+    .includes('expand')
+    .build();
   try {
-    ctx.body = await Category.findAll({
-      include: [
-        {model: Post, as: 'posts'}
-      ]
-    });
+    ctx.body = await Category.findAll(query);
   } catch(e) {
     ctx.throw(e.status || 500, e.message);
   }

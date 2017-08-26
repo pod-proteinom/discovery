@@ -38,8 +38,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Post.associate = function(models) {
-    models.Post.belongsTo(models.User, {foreignKey: 'author_id'});
-    models.Post.belongsTo(models.Category, {foreignKey: 'category_id'});
+    models.Post.belongsTo(models.User, {foreignKey: 'author_id', as: 'author'});
+    models.Post.belongsTo(models.Category, {foreignKey: 'category_id', as: 'category'});
   }
 
   return Post;
