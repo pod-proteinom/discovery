@@ -16,6 +16,14 @@ const readById = async (ctx, next) => {
   }
 }
 
+const read = async (ctx, next) => {
+  try {
+    ctx.body = await User.findAll({});
+  } catch(e) {
+    ctx.throw(e.status || 500, e.message);
+  }
+}
+
 const del = async (ctx, next) => {
   try {
     ctx.body = await User.destroy({where: {id: ctx.params.id}});
@@ -24,4 +32,4 @@ const del = async (ctx, next) => {
   }
 }
 
-module.exports = {create, readById, del};
+module.exports = {create, readById, read, del};

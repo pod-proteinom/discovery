@@ -1,4 +1,5 @@
 const {Category, Post} = require('core/database');
+const logger = require('core/logger');
 
 const create = async (ctx, next) => {
   try {
@@ -16,7 +17,7 @@ const readById = async (ctx, next) => {
   }
 }
 
-const readIncludingPosts = async (ctx, next) => {
+const read = async (ctx, next) => {
   try {
     ctx.body = await Category.findAll({
       include: [
@@ -36,4 +37,4 @@ const del = async (ctx, next) => {
   }
 }
 
-module.exports = {create, readById, readIncludingPosts, del};
+module.exports = {create, readById, read, del};
