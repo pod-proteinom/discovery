@@ -3,7 +3,7 @@ block header
   include components/navbar
 block main
   .container
-    .content
-      h1 Hello
+    h1.title #{post.title}
+    .content!= post.html
 block footer
   include components/footer

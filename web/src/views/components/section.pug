@@ -1,18 +1,22 @@
-section.section
-  .container.has-text-centered
-    .columns.is-centered
-      .column.is-half.is-narrow
-        h2.title.is-2.is-spaced Tutorials
-        p.subtitle.is-5.is-spaced  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere perspiciatis nobis, eligendi eius in repellat ducimus. At labore fugit quidem consectetur eius dolorum obcaecati hic praesentium, temporibus ipsam enim sequi. 
-        h3.title.is-3.is-spaced Latest tutorials
+each category in categories
+  section.section
+    .container.has-text-centered
+      .columns.is-centered
+        .column.is-half.is-narrow
+          h2.title.is-2.is-spaced #{category.name}
+          p.subtitle.is-5.is-spaced  #{category.excerpt}
+          h3.title.is-3.is-spaced Latest #{category.name}
 
-  each val in [1, 2, 3]
-    .columns
-      .column.is-offset-3.is-3
-        include post-card 
-      .column.is-3.is-narrow(style="padding-top:50px")
-        include post-card
-  .container.has-text-centered
-    .columns
-      .column     
-        a.button.is-medium(href="/tutorials") See all tutorials
+    each row in [1, 2, 3]
+      .columns
+        - var post = category.posts[row - 1];
+        .column.is-offset-3.is-3
+          include post-card 
+        - post = category.posts[row];
+        .column.is-3.is-narrow(style="padding-top:50px")
+          include post-card
+      
+    .container.has-text-centered
+      .columns
+        .column     
+          a.button.is-medium(href="/tutorials") See all #{category.name}

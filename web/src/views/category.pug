@@ -2,23 +2,18 @@ extends layouts/base
 block header
   include components/navbar
 block main
-  section.section.is-centered
-    .container
-      h1.title Category name
-      p.subtitle  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam, quasi nostrum, praesentium ab incidunt sint facilis molestias earum, possimus adipisci labore voluptates odio enim asperiores qui! Nesciunt quas reprehenderit, eaque.
+  each category in categories
+    include /components/category/hero
 
-  section.section.articles
-    .container
-      .columns
-        .column
-          include components/post-card  
-        .column
-          include components/post-card    
-        .column
-          include components/post-card   
-        .column
-          include components/post-card  
+    section.section
+      .container
+        each row in [1, 2]
+          .columns
+            each column in [1, 2, 3, 4]
+              - var post = category.posts[row * column - 1]
+              .column
+                include components/post-card
 
-      include components/category/pagination
+    include components/category/pagination
 block footer
   include components/footer

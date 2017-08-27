@@ -9,6 +9,7 @@ module.exports = {
   server: {
     port: 4040
   },
+  api: 'http://api:8080/api',
   app: {
     logger: {
       level: 'debug',
@@ -21,6 +22,9 @@ module.exports = {
         basedir: viewsDir,
         helpers: {}
       }
+    },
+    rp: {
+      json: true
     }
   },
   dirs : {

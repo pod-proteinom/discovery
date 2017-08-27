@@ -15,6 +15,7 @@ const readById = async (ctx, next) => {
 
 const read = async (ctx, next) => {
   const query = new QueryBuilder(ctx.query)
+    .whereIn('slug')
     .includes('expand')
     .build();
   try {
