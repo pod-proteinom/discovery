@@ -10,3 +10,11 @@ location /assets/ {
     autoindex off;
     alias /var/www/public/assets/;
 }
+
+location /images/ {
+    access_log off;
+    expires max;
+    include /etc/nginx/mime.types;
+    autoindex off;
+    alias /var/www/public/images/;
+}

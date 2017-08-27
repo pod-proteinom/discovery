@@ -1,7 +1,7 @@
 a.card(href="/" + category.name + "/" + post.slug, title=post.title)
   .card-image
     figure.image.is-4by3
-      img(src="http://bulma.io/images/placeholders/1280x960.png", alt="")
+      img(src="/images/" + post.image, alt="")
   .card-content
     .content
       h2.title #{post.title}

@@ -7,6 +7,7 @@ services:
       - DEFAULT_HOST=sanedev.dev
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ${IMAGES_DIR}:/var/www/public/images/
     ports:
       - "80:80"
       - "443:443"

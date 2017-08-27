@@ -7,10 +7,10 @@ block main
 
     section.section
       .container
-        each row in [1, 2]
+        each row in [0, 4]
           .columns
-            each column in [1, 2, 3, 4]
-              - var post = category.posts[row * column - 1]
+            each column in [0, 1, 2, 3]
+              - var post = category.posts[row + column]
               .column
                 include components/post-card
 
