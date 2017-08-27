@@ -1,4 +1,7 @@
 extends layouts/base
+block seo
+  include helpers/seo
+  +base("Programming", "programming desc")
 block header
   include components/navbar
 block main
