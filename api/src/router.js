@@ -3,7 +3,7 @@ const category = require('modules/category');
 const user = require('modules/user');
 const post = require('modules/post');
 
-let Router = require('koa-better-router')
+let Router = require('koa-better-router');
 let api = Router(config.router).loadMethods();
 
 api.get('/categories/:id', category.readById)

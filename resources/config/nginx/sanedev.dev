@@ -1,8 +1,11 @@
 location = /favicon.ico {
+    access_log off;
     alias /var/www/public/assets/favicon.ico;
 }
 
 location /assets/ {
+    access_log off;
+    expires max;
     include /etc/nginx/mime.types;
     autoindex off;
     alias /var/www/public/assets/;
