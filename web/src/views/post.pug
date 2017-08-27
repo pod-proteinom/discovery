@@ -2,8 +2,20 @@ extends layouts/base
 block header
   include components/navbar
 block main
+  .hero.is-primary.is-medium
+    .container.has-text-centered
+      .hero-head
+        nav.breadcrumb
+          ul
+            li
+              a(href="/") Sanedev
+            li
+              a(href="/") Category name
+      .hero-body
+          h1.title #{post.title}
   .container
-    h1.title #{post.title}
-    .content!= post.html
+    .columns.is-centered
+      .column.is-two-thirds.is-narrow
+        .content!= post.html
 block footer
   include components/footer
