@@ -21,7 +21,7 @@ app.use(async (ctx, next) => {
       await ctx.render('404');
     } else {
       logger.error(err.message);
-      ctx.body = err.message;
+      await ctx.render('500');
     }
     ctx.app.emit('error', err, ctx);
   }
